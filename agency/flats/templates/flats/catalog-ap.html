@@ -1,0 +1,108 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block header %}
+<link rel="stylesheet" href="{% static 'mainApp/css/table-catalog.css' %}">
+{% endblock %}
+
+{% block content %}
+
+<div class="container block">
+  <div class="row">
+    <div class="col-lg-10 offset-lg-1 col-sm-12">
+      <h1>Каталог квартир</h1>
+      <hr width="271px">
+      <p class="catalog-ap-description">За всеми этапами проведения сделки проследят профессионалы с большим опытом работы. Так же специалисты компании проведут проверку юридической чистоты сделки и подготовят все необходимые документы для её совершения.
+      </p>
+
+        <nav class="page-nav articles-nav ">
+                    <ul class="pagination">
+                        {% if flats.has_previous %}
+                            <a class="prev-el" href="?page={{ flats.previous_page_number }}">
+                                <i class="fa fa-arrow-left" aria-hidden="true"></i>
+                            </a>
+                        {% endif %}
+
+                        {% for n in flats.paginator.page_range %}
+                            {% if n > flats.number|add:-4 and n < flats.number|add:4 %}
+                                 <li class="pagination-item">
+                                     <a href='?page={{ n }}{% if request.GET.q %}&q={{ request.GET.q }}{% endif %}'>
+                                         <p class="page-num {% if n == flats.number %}page-action{% endif %}">{{ n }}</p>
+                                     </a>
+                                 </li>
+                            {% endif %}
+                        {% endfor %}
+
+                        {% if flats.has_next %}
+                            <a class="prev-el" href="?page={{ flats.next_page_number }}">
+                                <i class="fa fa-arrow-right" aria-hidden="true"></i>
+                            </a>
+                        {% endif %}
+                    </ul>
+                </nav>
+
+
+            <div class="table-catalog">
+                <table>
+                    <tr>
+                      <th>Фото</th>
+                      <th>Адрес</th>
+                      <th>Этаж</th>
+                      <th>Комнат</th>
+                      <th>Площадь <br> м2</th>
+                      <th>Цена</th>
+                      <th>Телефон</th>
+                    </tr>
+                    {% for flat in flats %}
+                        <tr>
+                          <td>
+                              <a class="flat-link" href="{% url 'flat-detail' slug=flat.slug %}">
+                                  <img class="table-catalog-img" src="{{ flat.prev_img.url }}">
+                              </a>
+                          </td>
+                          <td>
+                              <a class="flat-link" href="{% url 'flat-detail' slug=flat.slug %}">
+                                  ул. {{flat.street}} д.{{flat.house_number}}
+                              </a>
+                          </td>
+                          <td>{{flat.level}}</td>
+                          <td>{{flat.room}}</td>
+                          <td>{{flat.square}}</td>
+                          <td>{{flat.price}}</td>
+                          <td>{{flat.phone_number}}</td>
+                        </tr>
+                    {% endfor %}
+                </table>
+            </div>
+
+        <nav class="page-nav articles-nav ">
+                    <ul class="pagination">
+                        {% if flats.has_previous %}
+                            <a class="prev-el" href="?page={{ flats.previous_page_number }}">
+                                <i class="fa fa-arrow-left" aria-hidden="true"></i>
+                            </a>
+                        {% endif %}
+
+                        {% for n in flats.paginator.page_range %}
+                            {% if n > flats.number|add:-4 and n < flats.number|add:4 %}
+                                 <li class="pagination-item">
+                                     <a href='?page={{ n }}{% if request.GET.q %}&q={{ request.GET.q }}{% endif %}'>
+                                         <p class="page-num {% if n == flats.number %}page-action{% endif %}">{{ n }}</p>
+                                     </a>
+                                 </li>
+                            {% endif %}
+                        {% endfor %}
+
+                        {% if flats.has_next %}
+                            <a class="prev-el" href="?page={{ flats.next_page_number }}">
+                                <i class="fa fa-arrow-right" aria-hidden="true"></i>
+                            </a>
+                        {% endif %}
+                    </ul>
+                </nav>
+
+    </div>
+  </div>
+</div>
+
+{% endblock %}

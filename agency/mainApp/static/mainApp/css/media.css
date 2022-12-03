@@ -1,0 +1,49 @@
+@media (max-width:993px) {
+    .p-footer{
+        font-size: 10px;
+    }
+    header{
+        height: 250px;
+    }
+    .sh{
+        flex-direction: column;
+    }
+    .article-wrapper{
+        height: 370px;
+        flex-direction: column;
+        align-items: center;
+    }
+    .info_img{
+        flex-direction: column;
+    }
+    .building-cards,
+    .option{
+        flex-direction: column;
+        align-items: center;
+    }
+    .building-card:not(:first-child),
+    .to-owner{
+        margin-top: 30px;
+    }
+    table{
+        font-size: 8px;
+    }
+    .table-catalog-img{
+        width: 50px;
+    }
+    .app-info-wrapper{
+        margin: 20px;
+    }
+    .main-info,
+    .adv_items{
+        flex-direction: column;
+    }
+    .to-client,
+    .to-owner{
+        width: 100%;
+    }
+    .house-card,
+    .house-plan{
+        position: static;
+    }
+}

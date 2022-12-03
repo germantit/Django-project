@@ -1,0 +1,51 @@
+{% extends 'base.html' %}
+
+{% block content %}
+{% load static %}
+<div class="container block">
+      <div class="row">
+          <div class="col-lg-10 offset-1">
+              <h1>Продажа квартир</h1>
+              <hr width="40%">
+              <p class="sell-ap-info">
+                Операции с недвижимостью — это искусство сродни биржевой игре. Оно требует знаний рынка, его конъюнктуры, обладания талантом лицедея и психолога. При отсутствии таковых выгодно продать квартиру вы не сможете. Так что экономить на риелторе — решение не самое лучшее. Это вам подтвердит каждый, кто хоть раз продавал недвижимость. <br>
+                <br>
+                        Наше агентство предлагает: <br>
+                1) Оценку рыночной стоимости квартиры<br>
+                2) Качественную рекламу квартиры на ведущих площадках недвижимости<br>
+                3) Возможно, у нас уже есть покупатель для вас<br>
+                4) Сбор документов по ускоренной схеме
+              </p>
+
+              <h1>Оставить заявку на продажу квартиры</h1>
+              <hr width="60%">
+              <p class="sell-ap-info text-center">
+                Оставьте заявку на продажу квартиры. Наш специалист свяжется с вами в ближайшее время.
+              </p>
+
+              <form class="sale_order_form" method="post" action="">
+                {% csrf_token %}
+
+                <div class="form-group">
+                  <input type="text" maxlength="30" class="form-control" id="id_name" name="name" placeholder="Ваше имя" required>
+                </div>
+
+                <div class="form-group">
+                  <input type="text" class="form-control" maxlength="11" id=id_phone" name="phone" placeholder="Ваш номер" required>
+                </div>
+                <div class="form-group">
+                  <input type="email" class="form-control" maxlength="254" required name="email" id="id_email" placeholder="Ваша почта">
+                </div>
+
+                <div class="form-group">
+                  <textarea class="form-control message"  required name="message" id="id_message" rows="6" placeholder="Оставьте сообщение...">
+                  </textarea>
+                </div>
+
+                  <input class="btn btn-primary" type="submit" value="Добавить">
+              </form>
+          </div>
+      </div>
+  </div>
+
+{% endblock %}

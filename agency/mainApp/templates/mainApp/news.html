@@ -1,0 +1,92 @@
+{% extends 'base.html' %}
+
+{% block content %}
+{% load static %}
+<div class="container">
+        <div class="row">
+            <div class="col-lg-10 offset-1">
+                <nav class="page-nav articles-nav">
+                    <ul class="pagination">
+                        {% if articles.has_previous %}
+                            <a class="prev-el" href="?page={{ articles.previous_page_number }}">
+                                <i class="fa fa-arrow-left" aria-hidden="true"></i>
+                            </a>
+                        {% endif %}
+
+                        {% for n in articles.paginator.page_range %}
+                            {% if n > articles.number|add:-4 and n < articles.number|add:4 %}
+                                 <li class="pagination-item">
+                                     <a href='?page={{ n }}{% if request.GET.q %}&q={{ request.GET.q }}{% endif %}'>
+                                         <p class="page-num {% if n == articles.number %}page-action{% endif %}">{{ n }}</p>
+                                     </a>
+                                 </li>
+                            {% endif %}
+                        {% endfor %}
+
+                        {% if articles.has_next %}
+                            <a class="prev-el" href="?page={{ articles.next_page_number }}">
+                                <i class="fa fa-arrow-right" aria-hidden="true"></i>
+                            </a>
+                        {% endif %}
+                    </ul>
+                </nav>
+
+                <div class="articles animate__animated animate__fadeInLeft">
+                  {% for article in articles %}
+                  <div class="article-wrapper blue">
+                    <img class="article__img" src="{{ article.img.url }}" alt="">
+
+                      <div class="article_description">
+                        <h6 class="article-title">{{ article.title }}</h6>
+                          <p class="article-text">{{ article.description }}</p>
+
+                          <div class="article-footer">
+                            <button class="read-btn">
+                              <a class="read-a" href="{% url 'article-detail' slug=article.slug %}">Читать</a>
+                            </button>
+
+                            <div class="article-footer-stat">
+                              <p class="date">
+                                <img class="icons" src="{% static 'mainApp/img/icons/calendar.png' %}" alt="date">
+                                 {{ article.date|date:"Y-m-d" }}</p>
+                              <p class="views">
+                                <img class="icons" src="{% static 'mainApp/img/icons/eye.png' %}" alt=""> {{ article.views }} </p>
+                            </div>
+
+                          </div>
+
+                        </div>
+                  </div>
+                  {% endfor %}
+                </div>
+
+                <nav class="page-nav articles-nav">
+                    <ul class="pagination">
+                        {% if articles.has_previous %}
+                            <a class="prev-el" href="?page={{ articles.previous_page_number }}">
+                                <i class="fa fa-arrow-left" aria-hidden="true"></i>
+                            </a>
+                        {% endif %}
+
+                        {% for n in articles.paginator.page_range %}
+                            {% if n > articles.number|add:-4 and n < articles.number|add:4 %}
+                                 <li class="pagination-item">
+                                     <a href='?page={{ n }}{% if request.GET.q %}&q={{ request.GET.q }}{% endif %}'>
+                                         <p class="page-num {% if n == articles.number %}page-action{% endif %}">{{ n }}</p>
+                                     </a>
+                                 </li>
+                            {% endif %}
+                        {% endfor %}
+
+                        {% if articles.has_next %}
+                            <a class="prev-el" href="?page={{ articles.next_page_number }}">
+                                <i class="fa fa-arrow-right" aria-hidden="true"></i>
+                            </a>
+                        {% endif %}
+                    </ul>
+                </nav>
+
+            </div>
+        </div>
+    </div>
+{% endblock %}

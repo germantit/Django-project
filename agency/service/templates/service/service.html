@@ -1,0 +1,42 @@
+{% extends 'base.html' %}
+
+{% block content %}
+{% load static %}
+
+    <div class="container block">
+      <div class="row">
+          <div class="col-lg-10 offset-1 animate__animated animate__fadeIn">
+              <h1>Наши услуги</h1>
+              <hr width="214px">
+              <p class="article-content text-center about-service">
+                Агентство недвижимости “FlatBerry” оказывает широкий спектр услуг, связанных с покупкой, продажей, арендой и обменом жилья г. Ульновск. Если вас интересуют вопросы, связанные с квартирами в Подмосковье, не раздумывая, обращайтесь в наше агентство!
+              </p>
+
+              <div class="option">
+                  <div class="to-client animate__animated animate__fadeInLeft">
+                    <div class="option-info">
+                        <h3 class="option-info-title">Покупателям</h3>
+
+                        <a href="catalog-nb/">
+                            <p class="option-info-text">-квартиры в новостройках</p>
+                        </a>
+                        <a href="catalog-ap/">
+                            <p class="option-info-text">-покупка квартир</p>
+                        </a>
+                    </div>
+                  </div>
+
+                  <div class="to-owner animate__animated animate__fadeInRight">
+                    <div class="option-info">
+                    <h3 class="option-info-title">Владельцам</h3>
+
+                        <a href="sell/">
+                            <p class="option-info-text">-продать квартиру</p>
+                        </a>
+                    </div>
+                  </div>
+              </div>
+          </div>
+      </div>
+  </div>
+{% endblock %}

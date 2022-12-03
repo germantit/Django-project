@@ -1,0 +1,1020 @@
+body {
+    /*box-sizing: border-box;*/
+    font-family: 'Montserrat', sans-serif;
+    font-size: 13px;
+    height: 100%;
+}
+
+.blue{
+    background-color: #0072C0;
+}
+
+.white{
+    color: #fff;
+}
+
+a:hover{
+    color: #fff;
+    text-decoration: none;
+}
+
+.block{
+    text-align: center;
+    justify-content: center;
+}
+
+h1{
+    font-size: 36;
+    font-weight: 700;
+    padding-top: 100px;
+    line-height: 36px;
+}
+
+h4 {
+    font-size: 20px;
+    font-weight: 700;
+}
+
+
+hr{
+    color: #fff;
+    text-align: center;
+    margin: 18px auto;
+    border-color:#000;
+}
+
+.icons{
+    width: 9px;
+    height: 9px;
+    padding-bottom: 2px;
+    color: #fff;
+}
+
+
+/*______ОСНОВНЫЕ КОМПОНЕНТЫ_________-*/
+/* Шапка */
+header{
+	display: flex;
+    height: 81px;
+    line-height: 16px;
+    text-align: center;
+    font-weight: 100;
+}
+
+.head{
+    display: inline-block;
+    margin: 26px 8px;
+    color: #FFFFFF;
+    font-weight: thin;
+    transition: all 0.3s ease-out;
+}
+
+.head:hover{
+    font-weight: 700;
+    
+}
+
+.actual{
+    border: 2px solid #FFFFFF;
+    border-radius: 16px;
+    width: 100px;
+    height: 40px;
+    font-weight: bold;
+    padding-top: 9px;
+    background: rgba(255, 255, 255, 0);
+    transition:  background 0.5s ease-out;
+}
+.actual:hover{
+    background: rgba(255, 255, 255, 0.37);
+}
+
+/* Футер */
+.page-footer{
+    margin-top: 89px;
+    height: 93px;
+    display: flex;
+    align-items: center;
+    color: #fff;
+}
+
+.footer_items{
+    display: flex;
+    align-items: center;
+}
+
+.p-footer{
+    font-size: 14px;
+    line-height: 14px;
+    margin-bottom: 0;
+    font-weight: 700;
+}
+
+.social-items{
+    display: flex;
+}
+
+.social-item{
+    display: flex;
+    width: 30px;
+    height: 30px;
+    border: 1px solid #fff;
+    border-radius: 50%;
+    background-color: #fff;
+    padding: 5px;
+    margin: 0 5px;
+}
+
+/* Кнопка наверх */
+
+.back-to-top{
+    display: none;
+    position: fixed;
+    bottom: 150px;
+    right: 50px;
+    width: 50px;
+    height: 50px;
+    border: 1px solid #fff;
+    border-radius: 50%;
+    background-color:  #0072C0;
+}
+
+.back-to-top:hover{
+    filter: brightness(1.5);
+    outline: none;
+}
+
+.back-to-top::before,
+.back-to-top::after{
+    content: '';
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
+
+.back-to-top::before{
+    width: 5px;
+    height: 15px;
+    border-top-left-radius: 3px;
+    border-top-right-radius: 3px;
+    background-color: #fff;
+}
+
+.back-to-top::after{
+    width: 15px;
+    height: 15px;
+    transform: translate(-50%, -50%) rotate(45deg);
+    border-top: 5px solid #fff;
+    border-left: 5px solid #fff;
+}
+
+/*Карусель наград*/
+@media (max-width: 768px) {
+    .carousel-inner .carousel-item > div {
+        display: none;
+    }
+    .carousel-inner .carousel-item > div:first-child {
+        display: block;
+    }
+}
+
+.carousel-inner .carousel-item.active,
+.carousel-inner .carousel-item-next,
+.carousel-inner .carousel-item-prev {
+    display: flex;
+}
+
+/* display 3 */
+@media (min-width: 768px) {
+
+    .carousel-inner .carousel-item-right.active,
+    .carousel-inner .carousel-item-next {
+      transform: translateX(33.333%);
+    }
+
+    .carousel-inner .carousel-item-left.active,
+    .carousel-inner .carousel-item-prev {
+      transform: translateX(-33.333%);
+    }
+}
+
+.carousel-inner .carousel-item-right,
+.carousel-inner .carousel-item-left{
+  transform: translateX(0);
+}
+
+.adv-img{
+    width: 207px;
+    height: 207px;
+    border: transparent;
+    border-radius: 50%;
+    margin: 20px auto;
+    object-fit: cover;
+}
+
+
+/*__________*/
+
+/* Нумерация страниц */
+.page-nav{
+    display: flex;
+    justify-content: center;
+    margin: 0 auto;
+}
+
+.pagination-item{
+    text-align: center;
+}
+
+.page-num{
+    width: 30px;
+    height: 30px;
+    padding-top: 3px;
+    transition: border 1s ease-out;
+}
+
+.page-action,
+.page-num:hover{
+    border: 1px solid #0072C0;
+    border-radius: 50%;
+    color:  #0072C0;
+}
+
+
+
+.page-action:hover{
+    background-color:  #0072C0;
+    color: #fff;
+    transition: 0.2s all ease-in-out;
+}
+
+
+a.prev-el:hover{
+    color: #0072C0;
+}
+.fa:hover{
+    color: #0072C0;
+}
+
+.fa-arrow-left,
+.fa-arrow-right{
+    margin-top: 6px;
+}
+
+/*____________________________________________________________*/
+
+
+/* Слайдер */
+
+.slider{
+    margin-top: 50px;
+}
+
+/* Агентство недвижимости */
+
+.info_content{
+    max-width: 640px;
+    height: 120px;
+    margin: 0px auto;
+    padding-top: 0px;
+}
+
+.img{
+    width: 210px;
+    height: 210px;
+    border: 1px solid #000;
+    border-radius: 50%;
+}
+
+.info_img{
+    display: flex;
+    justify-content: space-around;
+    margin-bottom: 109px;
+}
+
+
+.img_description{
+    margin-top: 31px;
+}
+
+/* Наши преимущества */
+
+.advantages{
+    color: #fff;
+    text-align: center;
+}
+
+.adv_items{
+    display: flex;
+    justify-content: space-around;
+    margin: 52px auto 97px auto;
+}
+
+.advantages_descr{
+    max-width: 229px;
+    font-size: 18px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.white_line{
+    border-color:#fff;
+}
+
+/* Обратная связь */
+.feedback_form{
+    max-width: 590px;
+}
+
+.feedback_content{
+    max-width: 830px;
+}
+
+.form-control{
+    max-width: 400px;
+}
+
+.message{
+    height: 160px;
+    max-width: 100%;
+    resize: none;
+}
+
+.btn-primary{
+    display: block;
+    width: 137px;
+}
+
+
+/* Раздел НОВОСТИ */
+
+.articles{
+    padding-right: 30px;
+}
+
+.article-wrapper{
+    height: 196px;
+    display: flex;
+    border:transparent;
+    border-radius: 7px;
+    color: #fff;
+}
+
+.article__img{
+    border: transparent;
+    border-radius: 7px;
+    width: 222px;
+    height: 142px;
+    margin: 27px 0 0 29px;
+}
+
+.article_description{
+    width: 80%;
+    height: 142px;
+    margin: 27px 27px auto 45px;
+}
+
+.article-title{
+    font-size: 14px;
+    font-weight: bold;
+}
+
+.article-text{
+    font-size: 13px;
+    height: 87px;
+}
+
+.article-footer{
+    font-size: 12px;
+    display: flex;
+    margin-top: auto;
+}
+
+.read-btn:hover{
+    background-color: rgba(255, 255, 255, 0.3);
+}
+
+.read-btn{
+    margin-bottom: 40px;
+    background-color: transparent;
+    border: 1px solid #fff;
+    border-radius: 4px;
+    padding: 4px 15px;
+}
+
+.read-a{
+    color: #fff;
+}
+
+.article-footer-stat{
+    display: flex;
+    width: 120px;
+    justify-content: space-between;
+    margin-left: auto;
+}
+
+.article-wrapper:not(:first-child){
+    margin-top: 37px;
+}
+
+.articles-nav{
+    margin-top: 45px;
+}
+
+.bottom-nav{
+    margin-top: 0;
+    margin-bottom: 0;
+}
+
+/* Статья */
+
+.article{
+    max-width: 800px;
+    margin-top: 66px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.article-t{
+    padding-top: 35px;
+}
+
+.article_img{
+    border: transparent;
+    border-radius: 4px;
+    width: 100%;
+}
+
+.article-st{
+    display: flex;
+    justify-content: space-between;
+}
+
+
+.time-date-state{
+    display: flex;
+}
+
+
+.time-read{
+    margin-right: 15px;
+}
+
+.article-content{
+    text-align: left;
+    margin-top: 25px;
+    font-size: 14px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.h-comment{
+    text-align: left;
+    margin: 51px 0 19px 0;
+}
+
+.comment-block{
+    width: 80%;
+    border-radius: 8px;
+    color: #fff;
+    padding: 10px 0 0 15px;
+    font-size: 13px;
+    text-align: left;
+}
+
+.commentator-name{
+    font-weight: 700;
+    padding: 0;
+    margin: 0;
+}
+
+.comment-text{
+    margin-bottom: 4px;
+}
+
+.comment-d{
+    text-align: right;
+    margin-right:  15px;
+    padding-bottom: 9px;
+}
+
+/* Услуги */
+
+.option{
+    display: flex;
+    justify-content: space-around;
+    margin: 60px 0 60px;
+}
+
+.to-client{
+    width: 370px;
+    height: 346px;
+    background-image: url('../img/service/to_client.png');
+    color: #fff;
+    display: flex;
+    background-size: cover;
+    border-radius: 7px;
+}
+
+.option-info-text{
+    font-size: 18px;
+    margin: 0;
+    padding: 0;
+    color: #fff;
+    text-decoration: underline;
+}
+
+.option-info{
+    margin: auto;
+}
+
+.to-owner{
+    width: 370px;
+    height: 346px;
+    background-image: url('../img/service/to_owner.png');
+    color: #fff;
+    display: flex;
+    background-size: cover;
+    border-radius: 7px;
+}
+
+/* Каталог новостроек */
+
+.building-cards{
+    display: flex;
+    justify-content: space-around;
+
+}
+
+.building-card{
+    width: 240px;
+    height: 240px;
+    background-size: cover;
+    border: transparent;
+    border-radius: 6px;
+    display: flex;
+}
+
+.card-info{
+    margin: 0 auto;
+}
+
+.card-title{
+    text-decoration: none;
+    font-weight: 700;
+    text-shadow: #000 0 0 10px;
+    text-align: center;
+    padding: 60px 0 50px;
+}
+
+.read-more{
+    height: 34px;
+    font-size: 16px;
+    padding: auto;
+    background-color: #0072C0;
+}
+
+/* О компании */
+
+.advantages{
+    color: #fff;
+    text-align: center;
+}
+
+.oper{
+    font-size: 14px;
+    margin-bottom: 60px;
+    text-align: center;
+}
+
+.descr{
+    max-width: 450px;
+    margin: 0 auto;
+}
+
+.zayava{
+    font-size: 18px;
+    text-align: center;
+    margin-bottom: 66px;
+}
+
+.carousel{
+    padding-bottom: 85px;
+}
+
+
+/* Комплекс */
+
+h2{
+    font-size: 28px;
+    font-weight: 500;
+}
+
+.descr-section{
+    text-align: left;
+    margin-bottom: 98px;
+}
+
+.complex-descr{
+    margin-top: 20px;
+    font-size: 14px;
+
+}
+
+.map{
+    max-width: 60%;
+    height: 236px;
+    margin-top: 23px;
+}
+
+/* Галерея */
+.thumb img {
+    -webkit-filter: grayscale(0);
+    filter: none;
+    border-radius: 5px;
+    background-color: #fff;
+    border: 1px solid #ddd;
+    padding: 5px;
+}
+
+.thumb img:hover {
+    -webkit-filter: grayscale(1);
+    filter: grayscale(1);
+}
+
+.thumb {
+    padding: 5px;
+}
+
+.gallery-i{
+    display: flex;
+    flex-wrap: wrap;
+}
+
+.img-fluid{
+height: 250px;
+
+}
+/* ____________________ */
+
+.house-section{
+    margin-top: 94px;
+}
+
+.h-cards-wrapper{
+    display: flex;
+    flex-wrap: wrap;
+}
+
+.h-card{
+    margin-top: 23px;
+    height: 150px;
+    width: 150px;
+    background-color: #ADDEFF;
+    font-size: 18px;
+    margin-right: 50px;
+}
+
+.h-card-info{
+    padding-top: 21px;
+    padding-bottom: 21px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+
+}
+
+.h-btn{
+    margin: 33px auto 0 auto;
+    width: 113px;
+    font-size: 13px;
+}
+
+/* Карточка дома */
+
+
+@keyframes showBlock {
+    0% {
+      opacity: 0;
+    }
+    100% {
+      opacity: 1;
+    }
+  }
+
+.house-card{
+    display: none;
+    position: fixed;
+    max-width: 827px;
+    padding: 0 10px 40px;
+    background-color: rgba(0, 114, 192, 0.8);
+    top: 1%;
+    left: 12%;
+    right: 12%;
+    border: 5px #000 solid;
+    border-radius: 6px;
+    pointer-events: auto;
+    filter: blur(0px);
+    animation: showBlock 0.3s linear forwards;
+}
+
+.blur{
+    filter: blur(2px);
+}
+
+.closeCard{
+    background-color: transparent;
+    border: transparent;
+    color: #fff;
+    margin-left: 95%;
+    font-size: 25px;
+}
+
+
+.card-content{
+    display: flex;
+    flex-direction: column;
+}
+
+h1.h-card-title{
+    padding: 10px 0;
+}
+
+.view-plan{
+    color: black;
+    border: transparent;
+    background-color: transparent;
+}
+
+.view-plan:hover{
+    color: blue;
+}
+
+/* Планировка */
+
+#house-plan{
+    display: none;
+    animation: showBlock 0.3s linear forwards;
+}
+
+.house-plan{
+    width: 80%;
+    background-color: #fff;
+    top: 4%;
+    left: 15%;
+    display: none;
+    position: fixed;
+    padding: 0 10px 40px;
+    border: 5px #000 solid;
+    border-radius: 6px;
+    pointer-events: auto;
+    filter: blur(0px);
+    animation: showBlock 0.3s linear forwards;
+    z-index: 999999 !important;
+}
+
+.closePlan{
+    color: #000;
+}
+
+.app-info-wrapper{
+    text-align: left;
+    margin: 30px 0 26px 86px;
+    font-size: 14px;
+}
+
+.app-info{
+    padding: 0;
+    margin: 0;
+}
+
+.house-plan-img{
+    height: 300px;
+    margin: 15px 0;
+}
+
+button,
+button:active,
+button:focus {
+    outline: none;
+}
+
+.disabled{
+    pointer-events: none;
+}
+.enabled{
+    pointer-events: auto;
+}
+
+.card-body{
+    padding: 0;
+}
+
+/* Контакты */
+
+.contact-info-wrapper{
+    display: flex;
+    justify-content: space-around;
+    max-width: 300px;
+    margin: 0 auto;
+    font-size: 18px;
+}
+
+p.contact-info,
+p.contact-field{
+    margin: 0;
+}
+
+.contact-social{
+    display: flex;
+    justify-content: center;
+    margin: 20px 0 52px;
+}
+
+.contact-item{
+    width: 40px;
+    height: 40px;
+    border: 1px solid #000;
+    object-fit: cover;
+    padding: 5px;
+}
+
+.contact-map{
+    display: flex;
+    justify-content: center;
+    margin: 20px 0 52px;
+}
+
+.map-info{
+    font-size: 18px;
+}
+
+.contact-feedback{
+    font-size: 18px;
+}
+
+/* Каталог квартир */
+
+.catalog-ap-description{
+    font-size: 18px;
+    margin: 25px 0 36px;
+}
+
+/* Страница квартиры */
+
+.flat-info-wrapper{
+    margin-top: 56px;
+    font-size: 18px;
+}
+
+.flat-title{
+    max-width: 581px;
+    margin: 0 auto;
+}
+
+.main-info{
+    display: flex;
+    justify-content: space-between;
+    margin: 52px 0 68px;
+    text-align: left;
+}
+
+.short-descr p{
+    margin: 0;
+    padding: 0;
+}
+
+.flat-preview{
+    width: 400px;
+    height: 200px;
+    object-fit: cover;
+    border-radius: 6px;
+}
+
+.description-title{
+    text-align: left;
+}
+
+.description-text{
+    text-align: left;
+    margin: 23px 0 100px;
+    padding: 0;
+}
+
+.reg-for-view{
+    text-align: center;
+    max-width: 530px;
+    margin: 100px auto 0;
+
+}
+
+.title-reg{
+    font-weight: 700;
+    margin-bottom: 31px;
+}
+
+.reg_view{
+    display: flex;
+    justify-content: center;
+}
+
+.btn-reg-for-view{
+    margin: 0 auto;
+}
+
+a.flat-link{
+    color: #000;
+}
+a.flat-link:hover,
+a.flat-link:active{
+    color: #0072C0;
+    text-decoration: underline;
+    transition: 0.5s all;
+}
+
+.flat-img{
+    height: 250px;
+    width: 250px;
+    object-fit: cover;
+}
+
+/* Продажа квартиры */
+
+.sell-ap-info{
+    font-size: 18px;
+    text-align: left;
+}
+
+.sell-form{
+    margin-top: 52px;
+}
+
+/* Ссылки на домашней странице */
+
+a.from-home{
+    color: #000;
+}
+
+a.from-home:hover{
+    color: #0072C0;
+    font-weight: 700;
+    transition: 0.5s all;
+}
+
+.from-home-img{
+    border: #fff solid 0;
+    transition: border 1s ease-out;
+}
+
+.from-home-img:hover{
+    border: #fff solid 15px;
+}
+
+.link-hover-solid a {
+    display: inline-block;
+    color:  #000;
+    line-height: 1;
+    text-decoration: none;
+    cursor: pointer;
+}
+.link-hover-solid a:after {
+    background-color: #0072C0;
+    display: block;
+    content: "";
+    height: 2px;
+    width: 0%;
+    -webkit-transition: width .3s ease-in-out;
+    -moz--transition: width .3s ease-in-out;
+    transition: width .3s ease-in-out;
+}
+.link-hover-solid a:hover:after,
+.link-hover-solid a:focus:after {
+    width: 100%;
+}
+
+/** Отзывы */
+
+.review-text{
+    font-size: 14px;
+    text-align: center;
+}
+
+.review-block{
+    width: 100%;
+    margin-top: 45px;
+}
+
+.name-last_name{
+    display: flex;
+    justify-content: space-between;
+}
+
+.reg-for-sell{
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+}
+
+.name-folder{
+    width: 49%;
+}

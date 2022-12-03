@@ -1,0 +1,71 @@
+{% extends 'base.html' %}
+
+{% block content %}
+{% load static %}
+
+<div class="container block">
+    <div class="row">
+      <div class="col-lg-10 offset-1">
+        <h1>Отзывы</h1>
+        <hr width="206">
+        <p class="review-text">
+          Что такое отзыв о работе агентства недвижимости — это признание того, что агентство реально помогает совершать сделки с недвижимостью. Также отзыв об агентстве недвижимости помогает этому агентству сделать свою работу еще лучше, учесть ошибки, как свои, так и других агентств. Ваши отзывы помогают нам быть лучшим агентством недвижимости Ульяновска. Мы каждый день стремимся к улучшению качества обслуживания своих клиентов и росту профессионализма наших сотрудников.
+        </p>
+
+        {% if reviews_list %}
+        {% for review in reviews_list %}
+        <div class="comment-block review-block blue">
+          <p class="commentator-name">{{review.last_name}} {{review.name}}</p>
+          <p class="comment-text">
+            {{review.message}}
+          </p>
+          <p class="date comment-d">
+            <i class="fa fa-calendar" aria-hidden="true"></i>
+            {{review.date|date:"Y-m-d"}}
+          </p>
+        </div>
+        {% endfor %}
+        {% endif %}
+
+
+
+
+        <div class="col-lg-8 offset-lg-2">
+          <h4>Оставьте свой отзыв</h4>
+          <div class="reg-for-sell">
+            <form class="sell-form" method="POST">
+            {% csrf_token %}
+
+              <div class="name-last_name">
+                <div class="form-group name-folder">
+                  <input type="text" name="name" class="form-control" id="id_name" placeholder="Ваше имя" required>
+                </div>
+
+                <div class="form-group name-folder">
+                   <input type="text" name="last_name" class="form-control" id="id_last_name" placeholder="Ваше фамилия" required>
+                </div>
+              </div>
+
+
+              <div class="form-group">
+                <textarea name="message" id="id_message" class="form-control message" rows="6"
+                          placeholder="Ваш отзыв"
+                          required></textarea>
+              </div>
+
+                <input class="btn btn-primary btn-reg-for-view" type="submit" value="Добавить">
+            </form>
+
+          </div>
+        </div>
+
+
+
+
+    </div>
+
+      </div>
+    </div>
+  </div>
+
+{% endblock %}

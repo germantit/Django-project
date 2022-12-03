@@ -1,0 +1,60 @@
+{% extends "base.html" %}
+
+{% block content %}
+{% load static  %}
+
+<div class="container block ">
+        <div class="row">
+            <div class="col-lg-10 ml-auto mr-auto">
+                <div class="article">
+                    <img src="{{ article.img.url }}" class="article_img animate__animated animate__fadeInDown" alt="article_img">
+                    <div class="article-st">
+
+                        <p class="date article_s animate__animated animate__fadeInLeft">
+                          <i class="fa fa-calendar" aria-hidden="true"></i> {{ article.date|date:"d-m-Y" }}
+                        </p>
+                            <div class="time-date-state animate__animated animate__fadeInRight">
+                                <p class="time-read">
+                                    <i class="fa fa-clock-o" aria-hidden="true"></i> {{ article.time_to_read }} мин
+                                </p>
+                                <p class="views article_s">
+                                    <i class="fa fa-eye" aria-hidden="true"></i> {{ article.views }}
+                                </p>
+                            </div>
+
+                      </div>
+
+                      <h1 class="article-t animate__animated animate__fadeIn">{{ article.title }}</h1>
+                      <p class="article-content">
+                        {{ article.text|linebreaks  }}
+                      </p>
+                    <h4 class="h-comment">Комментарии: {{ comment_list.count }}</h4>
+                    {%  for comment in comment_list %}
+                    <div class="comment-block blue">
+                        <p class="commentator-name">{{ comment.name }}</p>
+                        <p class="comment-text">{{ comment.comment }}</p>
+                        <p class="date comment-d"><i class="fa fa-calendar" aria-hidden="true"></i>
+                            {{ comment.date|date:"d-m-Y G:i" }}</p>
+                    </div>
+                    {% endfor %}
+                    <h4 class="h-comment">Оставить комментарий</h4>
+                    <form class="feedback_form" method="post" action="">
+                    {% csrf_token %}
+                      <div class="form-group">
+                        <input name="name" type="text" class="form-control" required id="id_name" placeholder="Ваше имя">
+                      </div>
+
+                      <div class="form-group">
+                        <textarea name="comment" class="form-control message" rows="6" placeholder="Ваш комментарий" required id="id_comment" ></textarea>
+                      </div>
+                     <input class="btn btn-primary" type="submit" value="Добавить">
+                    </form>
+
+
+                </div>
+
+            </div>
+        </div>
+    </div>
+
+{% endblock %}

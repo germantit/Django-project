@@ -1,0 +1,90 @@
+{% extends 'base.html' %}
+
+{% block content %}
+{% load static %}
+<div class="container block animate__animated animate__swing">
+      <div class="row">
+          <div class="col-lg-10 offset-lg-1">
+              <h1>Наши контакты</h1>
+              <hr width="242px">
+              <div class="contact-info-wrapper">
+                  <div class="contact-fields">
+                    <p class="contact-field">Email:</p>
+                    <p class="contact-field">Телефон:</p>
+                  </div>
+
+                  <div class="contact-info">
+                      <p class="contact-info">flatberry@bb.com</p>
+                      <p class="contact-info">+7 (900) 800-35-35</p>
+                  </div>
+
+              </div>
+
+              <div class="contact-social">
+                <a href="#">
+                    <img class="social-item contact-item" src="{% static 'mainApp/img/social/instagram.png' %}" alt="">
+                  </a>
+                  <a href="#">
+                    <img class="social-item contact-item" src="{% static 'mainApp/img/social/vk.png' %}" alt="">
+                  </a>
+                  <a href="#">
+                    <img class="social-item contact-item" src="{% static 'mainApp/img/social/telegram.png' %}" alt="">
+                  </a>
+              </div>
+
+          </div>
+      </div>
+  </div>
+
+  <div class="blue">
+      <div class="container block white">
+          <div class="row">
+              <div class="col-lg-10 offset-lg-1 animate__animated animate__pulse">
+                  <h1>Наши офисы</h1>
+                  <hr width="208px" class="white_line">
+                  <p class="map-info">Адрес: г. Ульяновск, Московское ш., д. 91</p>
+                  <div class="contact-map">
+                    <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d1036.9772016118288!2d48.350706403050566!3d54.30509927573528!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x0!2zNTTCsDE4JzE5LjIiTiA0OMKwMjEnMDUuOSJF!5e0!3m2!1sru!2sru!4v1606814887550!5m2!1sru!2sru" width="770" height="330" frameborder="0" style="border:0;" allowfullscreen="" aria-hidden="false" tabindex="0"></iframe>
+                  </div>
+              </div>
+          </div>
+      </div>
+  </div>
+
+
+  <div class="container block">
+      <div class="row">
+          <div class="col-lg-10 offset-1">
+              <h1>Обратная связь</h1>
+              <hr width="293px">
+
+              <p class="info_content feedback_content contact-feedback">Если у вас возникли какие-либо вопросы, оставьте свои реквизиты и опишите вопрос, наши специалисты свяжутся с вами в ближайшее время и помогут вам.</p>
+          <div class="col-lg-3">
+
+          </div>
+             <form class="feedback_form" method="post" action="">
+                {% csrf_token %}
+
+                <div class="form-group">
+                  <input type="text" maxlength="30" class="form-control" id="id_name" name="name" placeholder="Ваше имя" required>
+                </div>
+
+                <div class="form-group">
+                  <input type="text" class="form-control" maxlength="11" id=id_phone" name="phone" placeholder="Ваш номер" required>
+                </div>
+                <div class="form-group">
+                  <input type="email" class="form-control" maxlength="254" required name="email" id="id_email" placeholder="Ваша почта">
+                </div>
+
+                <div class="form-group">
+                  <textarea class="form-control message"  required name="message" id="id_message" rows="6" placeholder="Оставьте сообщение...">
+                  </textarea>
+                </div>
+
+                  <input class="btn btn-primary" type="submit" value="Добавить">
+              </form>
+          </div>
+      </div>
+  </div>
+
+{% endblock %}

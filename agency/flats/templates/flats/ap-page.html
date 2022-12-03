@@ -1,0 +1,73 @@
+{% extends 'base.html' %}
+
+{% block content %}
+{% load static %}
+
+<div class="container block">
+      <div class="row">
+          <div class="col-lg-10 offset-lg-1 flat-info-wrapper">
+              <h3 class="flat-title">Продажа квартиры в г. Ульяновск ул. {{flat.street}} д.{{flat.house_number}} кв. {{flat.flat_number}}</h3>
+              <hr width="374px">
+
+              <div class="main-info">
+                <div class="short-descr">
+                    <p>Комнат: {{flat.room}}</p>
+                    <p>Этаж: {{flat.level}}</p>
+                    <p>Площадь: {{flat.square}} м2</p>
+                    <p>Цена: {{flat.price}} р</p>
+                    <p>Телефон: {{flat.phone_number}}</p>
+                </div>
+
+                <img src="{{ flat.prev_img.url }}" alt="" class="flat-preview">
+              </div>
+
+              <div class="flat-description">
+                <h3 class="description-title">Дополнительная информация</h3>
+                <p class="description-text">{{ flat.description }}</p>
+              </div>
+
+              <div class="gallery-section">
+                <h2 class="text-left">Фотографии</h2>
+
+                  <div class="gallery-i">
+                      {% if gallery %}
+                        {% for img in gallery %}
+                          <div class="col-lg-3 col-sm-5 thumb">
+                            <a data-fancybox="gallery" href="{{ img.gal_img.url }}">
+                              <img class="flat-img" src="{{ img.gal_img.url }}" alt="...">
+                            </a>
+                          </div>
+                        {% endfor %}
+                      {% endif %}
+                  </div>
+
+            </div>
+
+            <div class="reg-for-view">
+
+                <h3 class="title-reg">Записаться на просмотр квартиры</h3>
+
+               <form class="feedback_form reg_view" method="post">
+                {% csrf_token %}
+                <div class="form-group mr-2">
+                    <input type="text" class="form-control" name="name" maxlength="30" required="" id="id_name" placeholder="Ваше имя">
+                </div>
+
+                <div class="form-group">
+                    <input type="text" class="form-control" name="phone" maxlength="11" required="" id="id_phone" placeholder="Ваш номер">
+                </div>
+                   <div class="ml-2">
+                       <button type="submit" class="btn btn-primary btn-reg-for-view" id="otpravit">Отправить</button>
+                   </div>
+
+              </form>
+
+
+            </div>
+
+          </div>
+
+      </div>
+  </div>
+
+{% endblock %}

@@ -1,0 +1,89 @@
+{% extends 'base.html' %}
+
+{% block content %}
+{% load static %}
+
+<div class="container block">
+      <div class="container">
+          <div class="row">
+              <div class="col-lg-10 offset-1">
+                  <h1>Каталог новостроек</h1>
+                  <hr width="271px">
+
+                  <nav class="page-nav articles-nav">
+                    <ul class="pagination">
+                        {% if complexes.has_previous %}
+                            <a class="prev-el" href="?page={{ complexes.previous_page_number }}">
+                                <i class="fa fa-arrow-left" aria-hidden="true"></i>
+                            </a>
+                        {% endif %}
+
+                        {% for n in complexes.paginator.page_range %}
+                            {% if n > complexes.number|add:-4 and n < complexes.number|add:4 %}
+                                 <li class="pagination-item">
+                                     <a href='?page={{ n }}{% if request.GET.q %}&q={{ request.GET.q }}{% endif %}'>
+                                         <p class="page-num {% if n == complexes.number %}page-action{% endif %}">{{ n }}</p>
+                                     </a>
+                                 </li>
+                            {% endif %}
+                        {% endfor %}
+
+                        {% if complexes.has_next %}
+                            <a class="prev-el" href="?page={{ complexes.next_page_number }}">
+                                <i class="fa fa-arrow-right" aria-hidden="true"></i>
+                            </a>
+                        {% endif %}
+                    </ul>
+                </nav>
+
+
+                <div class="building-cards">
+                    {% for complex in complexes %}
+                    <div class="building-card" style="background-image: url({{ complex.img.url }}); ">
+                        <div class="card-info">
+                            <p class="option-info-text card-title">{{ complex.name }}</p>
+                                <a href="{% url 'complex-detail' slug=complex.slug %}">
+                                    <button class="btn btn-primary read-more" >
+                                        Подробнее
+                                    </button>
+                                </a>
+                        </div>
+
+                    </div>
+                    {% endfor %}
+                </div>
+
+                <nav class="page-nav articles-nav ">
+                    <ul class="pagination">
+                        {% if complexes.has_previous %}
+                            <a class="prev-el" href="?page={{ complexes.previous_page_number }}">
+                                <i class="fa fa-arrow-left" aria-hidden="true"></i>
+                            </a>
+                        {% endif %}
+
+                        {% for n in complexes.paginator.page_range %}
+                            {% if n > complexes.number|add:-4 and n < complexes.number|add:4 %}
+                                 <li class="pagination-item">
+                                     <a href='?page={{ n }}{% if request.GET.q %}&q={{ request.GET.q }}{% endif %}'>
+                                         <p class="page-num {% if n == complexes.number %}page-action{% endif %}">{{ n }}</p>
+                                     </a>
+                                 </li>
+                            {% endif %}
+                        {% endfor %}
+
+                        {% if complexes.has_next %}
+                            <a class="prev-el" href="?page={{ complexes.next_page_number }}">
+                                <i class="fa fa-arrow-right" aria-hidden="true"></i>
+                            </a>
+                        {% endif %}
+                    </ul>
+                </nav>
+
+
+
+              </div>
+          </div>
+      </div>
+  </div>
+
+{% endblock %}

@@ -1,0 +1,155 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block header %}
+<link rel="stylesheet" href="{% static 'mainApp/css/table-card.css' %}">
+{% endblock %}
+
+{% block content %}
+
+
+  <div class="continer block">
+    <div class="row"  id="all">
+      <div class="col-lg-10 offset-1">
+        <h1>{{ complex.name }}</h1>
+        <hr width="50%" >
+
+        <div class="descr-section">
+          <h2 class="complex-section">Описание жилого комлекса</h2>
+          <p class="complex-descr">{{ complex.description }}</p>
+
+        </div>
+
+        <div class="descr-section">
+          <h2>Расположение</h2>
+          <div id="map" class="map"></div>
+        </div>
+
+
+        <div class="gallery-section">
+          <h2 class="text-left">Фотографии</h2>
+
+            <div class="gallery-i">
+              {% if gallery %}
+                {% for img in gallery %}
+                  <div class="col-lg-3 col-sm-5 thumb">
+                    <a data-fancybox="gallery" href="{{ img.gal_img.url }}">
+                      <img class="img-fluid" src="{{ img.gal_img.url }}" alt="...">
+                    </a>
+                  </div>
+                {% endfor %}
+              {% endif %}
+            </div>
+      </div>
+
+      <div class="house-section">
+        <h2 class="text-left">Дома</h2>
+        <div class="h-cards-wrapper">
+          {% for house in houses %}
+
+          <div class="h-card">
+            <div class="h-card-info">
+              <p class="house-title">Дом {{ house.house_number }}</p>
+                 <button class="btn btn-primary read-more h-btn" id="showCard" onClick="viewHouseCard({{house.num_complex}})" >
+                  Подробнее
+                </button>
+            </div>
+          </div>
+
+          <div class="house-card" id="house-card">
+            <button class="closeCard" onClick="closeHouseCard({{house.num_complex}})">
+              <i class="fa fa-times" aria-hidden="true"></i>
+            </button>
+
+            <div class="card-content">
+              <h1 class="white h-card-title">Дом {{ house.house_number }}</h1>
+              <table class="table-container">
+
+                <tr>
+                  <th>Номер <br> квартиры</th>
+                  <th>Этаж</th>
+                  <th>Кол-во <br> комнат</th>
+                  <th>Площадь</th>
+                  <th>Отделка</th>
+                  <th>Цена <br> за м2</th>
+                  <th>Цена за <br> объект</th>
+                  <th>Планировка</th>
+                </tr>
+
+                <tr>
+                  {% for ap in house.apartment_set.all   %}
+                    <tr>
+                        <td>{{ap.apartment_number}}</td>
+                        <td>{{ap.level}}</td>
+                        <td>{{ap.room}}</td>
+                        <td>{{ap.square}}</td>
+                        <td>
+                          {% if ap.finishing %}
+                            С отделкой
+                          {% else %}
+                            Без отделки
+                          {% endif %}
+                        </td>
+                        <td>{{ap.price_m}}</td>
+                        <td>{{ap.price_total}}</td>
+                        <td><button class="view-plan" onClick="viewHousePlan({{ ap.num_house }})"><i class="fa fa-eye" aria-hidden="true"></i></button></td>
+                    </tr>
+
+
+                <div class="house-plan" id="house-plan">
+                  <button class="closeCard closePlan" onClick="closeHousePlan({{ ap.num_house }})">
+                    <i class="fa fa-times" aria-hidden="true"></i>
+                  </button>
+
+                  <h1 class="h-card-title">Квартира {{ap.apartment_number}}</h1>
+                  <div class="app-info-wrapper">
+                    <p class="app-info">Дом: {{house.house_number}}</p>
+                    <p class="app-info">Этаж: {{ap.level}}</p>
+                    <p class="app-info">Кол-во комнат: {{ap.room}}</p>
+                    <p class="app-info">Площадь: {{ap.square}}</p>
+                    <p class="app-info">Цена за м2: {{ap.price_m}}</p>
+                    <p class="app-info">Цена за квартиру: {{ap.price_total}}</p>
+                    <p class="app-info">
+                      {% if ap.finishing %}
+                        С отделкой
+                      {% else %}
+                        Без отделки
+                      {% endif %}
+                    </p>
+
+                    {% if ap.plan_img %}
+                    <a class="fancybox" rel="gallery1" href="{{ ap.plan_img.url }}">
+                      <img src="{{ ap.plan_img.url }}" class="house-plan-img" alt="plan">
+                    </a>
+                    {% endif %}
+                  </div>
+                </div>
+
+                  {% endfor %}
+                 </tr>
+
+              </table>
+            </div>
+          </div>
+
+        {% endfor %}
+        </div>
+      </div>
+    </div>
+  </div>
+  </div>
+{% endblock %}
+
+{% block script %}
+<script type="text/javascript">
+    var map;
+
+    DG.then(function () {
+        map = DG.map('map', {
+            center: [{{ complex.lat }}, {{ complex.lon }}],
+            zoom: 13
+        });
+
+        DG.marker([{{ complex.lat }}, {{ complex.lon }}]).addTo(map).bindPopup('{{ complex.name }}');
+    });
+</script>
+{% endblock %}
